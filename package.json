@@ -1,0 +1,28 @@
+{
+  "name": "fetch-api-lab",
+  "version": "1.0.0",
+  "description": "<h1 align=\"center\"><strong>Fetch API Lab</strong></h1> <br> <br> <h2>🎯 <strong>Objective</strong></h2> <p>This repository intends to host the implementation of the fetch API lab. from CSIS 3380.</p> <br/>",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/app.js",
+    "start": "node src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leandrofahur/fetch-api-lab.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leandrofahur/fetch-api-lab/issues"
+  },
+  "homepage": "https://github.com/leandrofahur/fetch-api-lab#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
