@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Fetch API Exercise Lab</title>
+  </head>
+  <body>
+    <div id="container">
+      <h1>The Fetch API Exercises</h1>
+      <p>Open the web inspector console to test.</p>
+      <button id="btn" type="click">Load Dog Photo</button>
+      <br />
+      <br />
+    </div>
+  </body>
+  <script>
+    // Place your code below this line
+    const btn = document.getElementById("btn");
+
+    // functions:
+    function loadSpinner() {
+      const spinner = `../assets/loader.svg`;
+      const img = `<img src="${spinner}" id="spinner" alt="Loading spinner image" />`;
+      document.querySelector(`#container`).insertAdjacentHTML(`beforeend`, img);
+    }
+
+    function removeSpinner() {
+      const spinner = document.querySelector(`img#spinner`);
+      spinner.parentElement.removeChild(spinner);
+    }
+
+    // document functions requested:
+    function getRandomDogPhoto() {
+      return fetch("https://dog.ceo/api/breeds/image/random");
+    }
+
+    function renderDogPhoto(url) {
+      const img = `<img src="${url}" alt="Random photo of a dog" />`;
+      document.querySelector("#container").insertAdjacentHTML("beforeend", img);
+    }
+
+    async function init() {
+      loadSpinner();
+      const response = await getRandomDogPhoto();
+      const data = await response.json();
+      console.log(data);
+      removeSpinner();
+
+      renderDogPhoto(data.message);
+    }
+
+    // event handlers:
+    btn.addEventListener("click", async (ev) => {
+      event.preventDefault();
+
+      // we need to remove the img tag if it is already displayed on the browser.
+      if (document.querySelector("img")) {
+        document
+          .querySelector("#container")
+          .removeChild(document.querySelector("img"));
+      }
+
+      init();
+    });
+  </script>
+</html>
